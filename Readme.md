@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # 🌎 Air Pollution Analysis — Coursera R Programming (Johns Hopkins)
 
 This repository contains my completed programming assignment for the **Air Pollution** project from the [Johns Hopkins University / Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science).
@@ -8,28 +7,28 @@ All analysis was implemented in **base R**, focusing on reproducibility, code cl
 
 ---
 
-## 💡 Summary for Recruiters
-This project demonstrates:
+## 💡 What this project shows
 - Reading and combining structured CSV data using base R.
 - Writing and sourcing custom R functions.
-- Handling missing values with `na.rm = TRUE`.
+- Handling missing values with `na.rm = TRUE` and `complete.cases()`.
 - Automating data summaries (means, counts, correlations).
-- Reproducible file structure and Git version control.
-
-All scripts (`pollutantmean.R`, `complete.R`, `corr.R`) were verified against Coursera’s autograder and produce identical outputs.
 
 ---
 
 ## 📂 Project Structure
-specdata/           – 332 CSV data files  
-pollutantmean.R     – Calculates mean pollutant levels  
-complete.R          – Counts complete cases per monitor  
-corr.R              – Computes correlations between sulfate & nitrate  
-.gitignore          – Excludes temp files and R history  
+```
+specdata/           – 332 CSV data files (one per monitor)
+pollutantmean.R     – Mean sulfate or nitrate level across selected monitors
+complete.R          – Count of complete cases per monitor
+corr.R              – Sulfate/nitrate correlation for monitors above a completeness threshold
+.gitignore          – Excludes temp files and R history
+```
 
 ---
 
 ## ⚙️ Function Examples
+Run from the repository folder:
+
 ```r
 source("pollutantmean.R"); source("complete.R"); source("corr.R")
 
@@ -43,34 +42,15 @@ complete("specdata", 1)
 cr <- corr("specdata", 150)
 head(cr)
 # [1] -0.01895754 -0.14051254 -0.04389737 -0.06815956 -0.12350667 -0.07588814
-
-🧠 Verification
-
-All outputs match Coursera’s expected results.
-The repository is fully reproducible — anyone with specdata/ can source the scripts and obtain identical results.
-
-🧠 Verification
-
-All outputs match Coursera’s expected results.
-The repository is fully reproducible — anyone with specdata/ can source the scripts and obtain identical results.
-
-🧰 Tools
-
-R (Base only)
-
-RStudio Desktop (Windows)
-
-Git & GitHub via SSH
-
-📜 License
-
-This work is shared for educational and portfolio purposes.
-All code authored by @Crobinson144 as part of Johns Hopkins / Coursera R Programming coursework.
-Dataset provided by Coursera for instructional use.
-
-“Clean, reproducible code is the best resume.”
-EOF
-
+```
 
 ---
 
+## 🧠 Verification
+The examples above match the expected outputs in the assignment instructions and were re-run against `specdata/` in September 2026.
+
+## 🧰 Tools
+R (base only), RStudio, Git and GitHub.
+
+## 📜 License
+Shared for educational and portfolio purposes. Code by @Crobinson144 as part of Johns Hopkins / Coursera R Programming coursework. Dataset provided by Coursera for instructional use.

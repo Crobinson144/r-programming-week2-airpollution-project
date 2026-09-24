@@ -1,15 +1,16 @@
 corr <- function(directory, threshold = 0) {
-  source("complete.R")
-  comp <- complete(directory)
-  
-  valid_ids <- comp$id[comp$nobs > threshold]
+  # Correlation between sulfate and nitrate for each monitor whose number of
+  # complete observations is greater than `threshold`.
+  # Counts complete cases directly, so this file no longer depends on
+  # sourcing complete.R from the current working directory.
+  files <- list.files(path = directory, pattern = "\\.csv$", full.names = TRUE)
   cor_values <- numeric()
-  files <- list.files(path = directory, full.names = TRUE)
   
-  for (i in valid_ids) {
-    data <- read.csv(files[i])
+  for (f in files) {
+    data <- read.csv(f)
     good <- complete.cases(data)
-    if (sum(good) > 0) {
+    nobs <- sum(good)
+    if (nobs > threshold && nobs > 0) {
       cor_values <- c(cor_values, cor(data$sulfate[good], data$nitrate[good]))
     }
   }
